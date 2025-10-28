@@ -1,0 +1,25 @@
+# Environnements virtuels créés par uv
+.venv/
+venv/
+__pycache__/
+
+# Fichiers Python compilés
+*.pyc
+*.pyo
+*.pyd
+
+# Fichiers de configuration uv
+.python-version
+uv.lock
+
+# Fichiers de configuration IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Fichier de travail des étudiants
+agario.py
+
+# Dossier des solutions (pour les enseignants)
+solutions/

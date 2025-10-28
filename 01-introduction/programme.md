@@ -10,6 +10,7 @@
 - [ ] Présentation du cours → [Site du cours](https://python.info-mines.paris)
 - [ ] Configuration Discord → [Discord.md](./Discord.md) - Canaux `#general` et `#questions`
 - [ ] Installation et utilisation de UV → [uv.md](./uv.md) - Gestionnaire d'environnement Python
+- [ ] TP Agar.io → [tp-agario/](./tp-agario/) - Développement progressif d'un jeu avec Pygame
 
 ---
 
