@@ -1,4 +1,12 @@
+# Fichiers et dossiers personnels des étudiants
+perso*
+**/perso/
+**/perso
 
+# Exception : garder les fichiers .keep pour créer les dossiers
+!**/perso/.keep
+
+# Fichiers confidentiels
 Trombi.pdf
 */presences.csv
 **/presences.csv
