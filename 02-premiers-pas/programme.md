@@ -12,6 +12,10 @@
 - [ ] Présentation des ressources en ligne → [python.info-mines.paris](https://python.info-mines.paris)
 - [ ] Cours "Premiers pas" - Concepts fondamentaux
 - [ ] TD pratique → [td-premiers-pas.md](./td-premiers-pas.md)
+- [ ] Devoirs
+    - Lire et apprendre le cours sur les nombres https://python.info-mines.paris/nombres-nb/
+    - Lire et apprendre le cours sur le formattage des string https://python.info-mines.paris/formats-impressions-nb/
+
 
 ---
 
