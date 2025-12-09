@@ -1,6 +1,6 @@
 # Programme du Cours 03 - Conteneurs et chaînes
 
-**Date :** _À déterminer_
+**Date :** 09/12/2025
 
 ---
 
@@ -9,14 +9,14 @@
 - [ ] Rappel + questions
 - [ ] Appel des présences → `presences.csv`
 - [ ] Récupération du cours depuis GitHub
-- [ ] Présentation des ressources en ligne → [python.info-mines.paris](https://python.info-mines.paris)
-- [ ] Cours "Conteneurs" - Listes, tuples, dictionnaires, sets
-- [ ] Cours "Chaînes de caractères" - Slicing, méthodes, formatage
-- [ ] TD pratique → [td-pendu.md](./td-pendu.md)
+- [ ] **Correction Ex2 - Chiffre de César** → Au tableau (~20 min)
+- [ ] Cours "Conteneurs" - Listes, tuples, dictionnaires, sets (~30 min)
+- [ ] Cours "Chaînes de caractères" - Slicing, méthodes, formatage (~20 min)
+- [ ] TD pratique → [td-pendu.md](./td-pendu.md) (~60 min)
 - [ ] Devoirs
-    - Lire et apprendre le cours sur les fichiers → https://python.info-mines.paris/files-nb/
-    - Lire et apprendre le cours sur les références → https://python.info-mines.paris/references-nb/
-    - **Préparer 2 questions par personne** sur ces sujets → À poster sur Discord **#questions** avant le prochain cours
+  - Lire et apprendre le cours sur les fichiers → <https://python.info-mines.paris/files-nb/>
+  - Lire et apprendre le cours sur les références → <https://python.info-mines.paris/references-nb/>
+  - **Préparer 2 questions par personne** → Discord #questions
 
 ---
 
@@ -62,27 +62,56 @@ jupyter lab
 
 ---
 
+## Correction Ex2 - Chiffre de César
+
+**Format :** Correction au tableau (live coding)
+
+**Durée :** ~20 min
+
+**Objectif :** Transition depuis cours 02 vers conteneurs/chaînes
+
+**Points abordés :**
+- Itération sur strings (caractère par caractère)
+- Construction progressive : liste temporaire + `.join()`
+- Méthodes de strings : `.isupper()`, `.islower()`, `.isalpha()`
+- Conversions ASCII : `ord()` / `chr()`
+- Opérateur modulo `%` pour décalage circulaire
+
+**Questions de discussion :**
+- Pourquoi liste + join plutôt que concaténation directe ?
+- String immuable vs liste mutable
+- Complexité O(n) vs O(n²)
+
+➜ Cette correction introduit naturellement les concepts de manipulation de chaînes et construction de conteneurs
+
+---
+
 ## Cours en ligne - Sections du jour
 
 Rendez-vous sur [python.info-mines.paris](https://python.info-mines.paris) :
 
 ### 1. Conteneurs (1/2)
-**Lien :** https://python.info-mines.paris/containers-1-nb/
+
+**Lien :** <https://python.info-mines.paris/containers-1-nb/>
 
 **Concepts clés :**
+
 - **Listes** : Structures dynamiques, taille variable, modification en place
 - **Tuples** : Séquences immuables, hashables (utilisables comme clés de dictionnaires)
 - **Range** : Génération efficace de séquences numériques
 
 **Opérations importantes :**
+
 - Indexation et slicing avec modification
 - Méthodes : `append()`, `pop()`, `extend()`, `insert()`, `sort()`, `reverse()`
 - Affectation par slices : `L[i:j] = L2`
 
 ### 2. Séquences et chaînes
-**Lien :** https://python.info-mines.paris/sequences-str-nb/
+
+**Lien :** <https://python.info-mines.paris/sequences-str-nb/>
 
 **Concepts clés :**
+
 - **Slicing avancé** : `S[i:j:k]`, indices négatifs, comportement permissif
 - **Méthodes de manipulation** : `strip()`, `split()`, `join()`, `replace()`, `find()`
 - **Formatage** : f-strings, insertion dynamique de valeurs
@@ -93,41 +122,13 @@ Rendez-vous sur [python.info-mines.paris](https://python.info-mines.paris) :
 ## TD - Jeu du pendu en TUI
 
 Mise en pratique des conteneurs et chaînes via un projet ludique :
+
 - Version facile : Mot prédéfini, affichage ASCII basique
 - Version avancée : Dictionnaire de mots aléatoires, scoring, interface améliorée
 
 **Focus pédagogique :** Choix des structures de données (list vs set vs dict) et itérations appropriées
 
 ➜ Voir [td-pendu.md](./td-pendu.md) pour les détails
-
----
-
-## Devoirs pour le prochain cours
-
-### 1. Lire les cours suivants
-
-📖 **Fichiers** : https://python.info-mines.paris/files-nb/
-- Ouverture avec `open()`
-- Modes (lecture/écriture/binaire)
-- Context managers (`with`)
-- Module `pathlib`
-
-📖 **Références** : https://python.info-mines.paris/references-nb/
-- Mutabilité vs immuabilité
-- Aliasing et références partagées
-- Shallow copy vs deep copy
-- Tests `is` vs `==`
-
-### 2. Préparer 2 questions par personne
-
-**Obligatoire** : Chaque étudiant doit préparer **2 questions** sur les sujets "Fichiers" et "Références"
-
-**Format :**
-- Questions libres sur ce qui vous intrigue, bloque, ou intéresse
-- Exemples : "Pourquoi utiliser `with` plutôt que `open()` seul ?", "Quelle différence entre `.copy()` et `copy.deepcopy()` ?"
-- Posez vos questions dans le canal Discord **#questions** avant le prochain cours
-
-**Lien Discord :** https://discord.gg/He8zWD7T
 
 ---
 

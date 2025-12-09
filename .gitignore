@@ -10,3 +10,7 @@ perso*
 Trombi.pdf
 */presences.csv
 **/presences.csv
+
+# Corrections (faites au tableau)
+**/correction-*.py
+**/correction-*.md
