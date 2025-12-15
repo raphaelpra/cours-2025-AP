@@ -35,7 +35,7 @@ def cesar(plain, key, encode=True):
 
     # de combien doit-on décaler?
     # on a dit 'a' -> 1
-    offset = ord(key.lower()) - ord('a') + 1
+    offset = ord(key    ) - ord('a') + 1
 
     # si on déchiffre, on décale dans l'autre sens
     if not encode:
