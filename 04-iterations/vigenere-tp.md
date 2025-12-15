@@ -17,7 +17,8 @@ def cesar(plain, key, encode=True):
     Retourne:
     - str - le texte chiffré ou déchiffré
 
-    par convention, key='a' signifie un décalage de 1, et donc avec la clé 'z' on ne modifie pas le message
+    par convention, key='a' signifie un décalage de 1, et donc avec la clé 'z' on ne modifie pas le message - convention totalement arbitraire, et pas forcément celle utilisée classiquement
+
     """
 
     # simple vérification de la clé
@@ -85,4 +86,4 @@ commencez par copier-coller la fonction `cesar` définie plus haut.
 
 ## indices
 
-il y a dans le module `itertools` des outils qui vous permettent d'écrire vigenere la logique de la clé qui "tourne" de façon élégante.
+il y a dans le module `itertools` des outils qui vous permettent d'écrire vigenere et notamment la logique de la clé qui "tourne" de façon élégante.

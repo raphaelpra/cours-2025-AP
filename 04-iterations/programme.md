@@ -15,15 +15,19 @@
   - dictionnaire - liste - tuples - set
   - références partagées
   - fichiers - vite fait
-- Cours "Itérations" 
+- [ ] Cours "Itérations" 
   - [ ] 1/3 boucle `for` et basics itertools: <https://python.info-mines.paris/iterations-1-nb/>
   - [ ] 2/3 compréhensions et expressions génératrices: <https://python.info-mines.paris/iterations-2-nb/>
   - [ ] 3/3 en fonction de l'avancement: fonctions génératrices <https://python.info-mines.paris/generateurs-nb/> (si le temps le permet)
-- TP: [code de Vigenere](vigenere-tp.md)
-- TP: [énumérer les solutions d'un problème combinatoire le problème des reines](https://python-exos.info-mines.paris/tps/queens/readme-queens-nb/)
+- [ ] TP: [code de Vigenere](vigenere-tp.md)
+- [ ] TP: [énumérer les solutions d'un problème combinatoire: le problème des reines](https://python-exos.info-mines.paris/tps/queens/readme-queens-nb/)
 - [ ] Devoirs
-  - Lire et apprendre le cours sur 
-    - [ ] ... à compléter
+  - Lire et apprendre le cours, dans le chapitre "syntaxe et instructions", sur les notebooks suivants qui ont été vus en séance mais à 1000 km/h:
+    - [ ] syntaxe
+    - [ ] présentation du code
+    - [ ] affectations
+    - [ ] opérateurs
+    - [ ] instructions
   - **Préparer 2 questions par personne** → Discord #questions
 
 ---
@@ -120,7 +124,7 @@ Rendez-vous sur [python.info-mines.paris](https://python.info-mines.paris) :
 
 ## TP - Le code de Vigenere
 
-il s'agit de écrire une fonction de chiffrement et déchiffrement selon le code de Vigenere, qui est une amélioration du code de César.
+il s'agit d'écrire une fonction de chiffrement et déchiffrement selon le code de Vigenere, qui est une amélioration du code de César.
 
 Voyez l'énoncé dans le fichier [vigenere-tp.md](vigenere-tp.md).
 
