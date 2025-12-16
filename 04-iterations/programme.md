@@ -50,13 +50,30 @@ git pull
 
 ➜ Vos fichiers `perso*` sont automatiquement ignorés par git (pas de conflits)
 
+### Pour le cours du 16/12/2025 uniquement
+
+comme je n'ai pas les droits d'écrire dans le dépôt habituel et que M. Prasquier est à l'autre bout du monde, nous allons devoir utiliser un dépôt temporaire.
+
+```bash
+# si nécesaire
+# cd cours-2025-AP
+
+# on rajoute un lien vers un autre dépôt remote
+git remote add origin2 git@github.com:parmentelat/cours-2025-AP.git
+
+# on va chercher ce qu'il y a dedans
+git fetch --all
+
+git switch course4
+
+# là vous devriez avoir le dossier `04-iteration` où nous allons travailler aujourd'hui
+```
+
 ---
 
 ## exo `parse_graph`
 
 [seulement première partie `parse_graph`](https://python-exos.info-mines.paris/tps/graph-shortest-path/readme-graph-shortest-path-nb/)
-
-
 
 ---
 
@@ -92,7 +109,6 @@ jupyter lab
 ## Cours en ligne - Sections du jour
 
 Rendez-vous sur [python.info-mines.paris](https://python.info-mines.paris) :
-
 
 ### Itérations (1/3)
 
