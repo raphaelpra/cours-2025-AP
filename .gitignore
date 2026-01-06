@@ -14,3 +14,7 @@ Trombi.pdf
 # Corrections (faites au tableau)
 **/correction-*.py
 **/correction-*.md
+
+# Python cache
+**/__pycache__/
+*.pyc
