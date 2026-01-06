@@ -1,6 +1,6 @@
 # TP - Créer une CLI qui interroge une API
 
-Projet pratique combinant classes, argparse et appels HTTP.
+Projet pratique pour maîtriser argparse et les appels HTTP.
 
 ➜ Créez vos fichiers dans le dossier `perso/` pour travailler librement sans conflit git.
 
@@ -9,7 +9,6 @@ Projet pratique combinant classes, argparse et appels HTTP.
 ## Objectifs pédagogiques
 
 Ce TP met l'accent sur :
-- **Classes** : modéliser les données reçues de l'API
 - **argparse** : créer une interface en ligne de commande propre
 - **requests** : effectuer des appels HTTP
 - **Gestion d'erreurs** : gérer les cas où l'API ne répond pas
@@ -61,51 +60,12 @@ On utilise l'API gratuite : https://v2.jokeapi.dev/
 }
 ```
 
-### 1.2 Classe Joke
-
-Modélisez une blague avec une classe :
-
-```python
-class Joke:
-    """Représente une blague"""
-
-    def __init__(self, category: str, content: str):
-        self.category = category
-        self.content = content
-
-    def __repr__(self):
-        return f"[{self.category}] {self.content}"
-
-    @classmethod
-    def from_api_response(cls, data: dict) -> "Joke":
-        """
-        Crée une Joke à partir de la réponse JSON de l'API.
-
-        Gère les deux types : 'single' et 'twopart'
-        """
-        category = data.get("category", "Unknown")
-
-        if data.get("type") == "single":
-            content = data["joke"]
-        else:
-            # twopart
-            content = f"{data['setup']}\n→ {data['delivery']}"
-
-        return cls(category, content)
-```
-
-**Point pédagogique : `@classmethod`**
-
-- Méthode de classe (pas d'instance) - premier paramètre `cls` (la classe)
-- Permet de créer un objet autrement qu'avec `__init__`
-- Pattern courant : `from_json`, `from_file`, `from_api_response`
-
-### 1.3 Fonction d'appel API
+### 1.2 Fonction d'appel API
 
 ```python
 import requests
 
-def get_joke(category: str = "Any", lang: str = "fr") -> Joke:
+def get_joke(category: str = "Any", lang: str = "fr") -> dict:
     """
     Récupère une blague depuis l'API.
 
@@ -114,7 +74,7 @@ def get_joke(category: str = "Any", lang: str = "fr") -> Joke:
         lang: Langue (fr, en, de, es, pt, cs)
 
     Returns:
-        Un objet Joke
+        Un dictionnaire avec les données de la blague
 
     Raises:
         requests.RequestException: Si l'API ne répond pas
@@ -130,7 +90,27 @@ def get_joke(category: str = "Any", lang: str = "fr") -> Joke:
     if data.get("error"):
         raise ValueError(f"Erreur API: {data.get('message')}")
 
-    return Joke.from_api_response(data)
+    return data
+```
+
+### 1.3 Formatage de la blague
+
+```python
+def format_joke(data: dict) -> str:
+    """
+    Formate une blague pour l'affichage.
+
+    Gère les deux types : 'single' et 'twopart'
+    """
+    category = data.get("category", "Unknown")
+
+    if data.get("type") == "single":
+        content = data["joke"]
+    else:
+        # twopart
+        content = f"{data['setup']}\n→ {data['delivery']}"
+
+    return f"[{category}] {content}"
 ```
 
 ### 1.4 CLI avec argparse
@@ -168,8 +148,8 @@ def main():
 
     try:
         for i in range(args.nombre):
-            joke = get_joke(category=args.category, lang=args.lang)
-            print(joke)
+            data = get_joke(category=args.category, lang=args.lang)
+            print(format_joke(data))
             if i < args.nombre - 1:
                 print()  # Ligne vide entre les blagues
     except requests.RequestException as e:
@@ -205,8 +185,8 @@ Choisissez **une API** parmi les suivantes et créez votre propre CLI.
 
 Votre code doit avoir :
 
-1. **Une classe** qui modélise les données de l'API
-2. **Une fonction** qui appelle l'API et retourne un objet de votre classe
+1. **Une fonction** qui appelle l'API et retourne les données
+2. **Une fonction** qui formate les données pour l'affichage
 3. **Une CLI** avec au moins 2 options pertinentes
 4. **Gestion d'erreurs** (réseau, API)
 
@@ -355,16 +335,15 @@ https://www.boredapi.com/api/activity?type=social&participants=2
 
 ### Partie 1 - Exemple guidé (blagues)
 - [ ] Installation de `requests`
-- [ ] Classe `Joke` avec `__init__` et `__repr__`
-- [ ] Méthode `from_api_response`
 - [ ] Fonction `get_joke` avec gestion d'erreurs
+- [ ] Fonction `format_joke` pour l'affichage
 - [ ] CLI avec argparse (category, lang, nombre)
 - [ ] Test manuel des différentes options
 
 ### Partie 2 - Votre API
 - [ ] Choix d'une API
-- [ ] Classe pour modéliser les données
 - [ ] Fonction d'appel API
+- [ ] Fonction de formatage
 - [ ] CLI avec au moins 2 options
 - [ ] Gestion des erreurs réseau
 - [ ] Test avec `--help`
@@ -437,29 +416,11 @@ Créer un fichier `perso/config.json` pour stocker les préférences :
 
 - **requests** : https://requests.readthedocs.io/
 - **argparse tutorial** : https://docs.python.org/3/howto/argparse.html
-- **Classes Python** : https://python.info-mines.paris/classes-exemples-nb/
 - **API publiques** : https://github.com/public-apis/public-apis
 
 ---
 
 ## Points d'attention pédagogiques
-
-### Pattern classmethod factory
-
-```python
-class Meteo:
-    def __init__(self, temp, vent):
-        self.temp = temp
-        self.vent = vent
-
-    @classmethod
-    def from_api(cls, data):
-        # Transforme les données brutes en objet propre
-        return cls(
-            temp=data["current_weather"]["temperature"],
-            vent=data["current_weather"]["windspeed"]
-        )
-```
 
 ### Gestion d'erreurs HTTP
 
@@ -483,3 +444,16 @@ except requests.RequestException as e:
 | Option flag | `parser.add_argument("-v", action="store_true")` | Bool on/off |
 | Option valeur | `parser.add_argument("-n", type=int, default=1)` | Avec valeur |
 | Choix | `parser.add_argument("--lang", choices=["fr","en"])` | Liste fermée |
+
+### Passage de paramètres à l'URL
+
+```python
+# Méthode 1 : construction manuelle (déconseillé)
+url = f"https://api.example.com/data?param1={value1}&param2={value2}"
+
+# Méthode 2 : avec params (recommandé)
+url = "https://api.example.com/data"
+params = {"param1": value1, "param2": value2}
+response = requests.get(url, params=params)
+# requests construit automatiquement : https://api.example.com/data?param1=...&param2=...
+```
