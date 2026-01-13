@@ -6,12 +6,12 @@
 
 ## Déroulé de la séance
 
-- [ ] Rappel + questions (+ questions discord)
-- [ ] Appel des présences → `presences.csv`
-- [ ] Récupération du cours depuis GitHub
-- [ ] Cours "Classes" - Introduction à la POO (~40 min)
-- [ ] Cours "argparse/CLI" - Écrire un lanceur (~20 min)
-- [ ] TP pratique → [tp-cli-api.md](./tp-cli-api.md) (~60 min)
+- [x] Rappel + questions (+ questions discord)
+- [x] Appel des présences → `presences.csv`
+- [x] Récupération du cours depuis GitHub
+- [x] Cours "Classes" - Introduction à la POO (~40 min)
+- [x] Cours "argparse/CLI" - Écrire un lanceur (~20 min)
+- [x] TP pratique → [tp-cli-api.md](./tp-cli-api.md) (~60 min)
 - [ ] Devoirs
   - Terminer le TP si non fini
   - **Préparer 2 questions par personne** → Discord #questions
