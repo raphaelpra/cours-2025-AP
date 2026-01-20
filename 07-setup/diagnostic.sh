@@ -111,7 +111,7 @@ if [ -f ~/.bashrc ]; then
     ok ".bashrc existe"
     
     # Compter les blocs conda
-    conda_blocks=$(grep -c "conda initialize" ~/.bashrc 2>/dev/null || echo "0")
+    conda_blocks=$(grep -c "conda initialize" ~/.bashrc 2>/dev/null) || conda_blocks=0
     if [ "$conda_blocks" -gt "0" ]; then
         fail "$conda_blocks bloc(s) 'conda initialize' dans .bashrc !"
         echo "    -> Editez ~/.bashrc et supprimez ces blocs"
@@ -125,7 +125,7 @@ fi
 if [ -f ~/.zshrc ]; then
     ok ".zshrc existe"
     
-    conda_blocks=$(grep -c "conda initialize" ~/.zshrc 2>/dev/null || echo "0")
+    conda_blocks=$(grep -c "conda initialize" ~/.zshrc 2>/dev/null) || conda_blocks=0
     if [ "$conda_blocks" -gt "0" ]; then
         fail "$conda_blocks bloc(s) 'conda initialize' dans .zshrc !"
         echo "    -> Editez ~/.zshrc et supprimez ces blocs"
@@ -164,8 +164,8 @@ command -v uv &> /dev/null || ((errors++))
 command -v conda &> /dev/null && ((errors++))
 [ -n "$CONDA_PREFIX" ] && ((errors++))
 
-bashrc_conda=$(grep -c "conda initialize" ~/.bashrc 2>/dev/null || echo "0")
-zshrc_conda=$(grep -c "conda initialize" ~/.zshrc 2>/dev/null || echo "0")
+bashrc_conda=$(grep -c "conda initialize" ~/.bashrc 2>/dev/null) || bashrc_conda=0
+zshrc_conda=$(grep -c "conda initialize" ~/.zshrc 2>/dev/null) || zshrc_conda=0
 [ "$bashrc_conda" -gt "0" ] && ((errors++))
 [ "$zshrc_conda" -gt "0" ] && ((errors++))
 

@@ -18,3 +18,4 @@ Trombi.pdf
 # Python cache
 **/__pycache__/
 *.pyc
+06-classes-boids/tp-boids/.ipynb_checkpoints
