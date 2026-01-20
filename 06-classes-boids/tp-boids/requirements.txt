@@ -1,2 +1,3 @@
 # that's all we need
 arcade
+jupyter
