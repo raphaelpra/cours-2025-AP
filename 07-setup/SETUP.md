@@ -20,6 +20,7 @@ Si vous avez Conda installe, vous devrez le desactiver completement (voir sectio
 3. [Desactiver Conda](#partie-3--desactiver-completement-conda)
 4. [Environnements virtuels](#partie-4--environnements-virtuels-venv)
 5. [Configuration VS Code](#partie-5--configuration-vs-code-avec-venv)
+6. [Desinstallation](#partie-6--desinstallation)
 
 ---
 
@@ -460,23 +461,63 @@ UV est ecrit en Rust et remplace avantageusement `pip` et `conda` pour la gestio
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-**Windows (PowerShell)** :
-```powershell
-irm https://astral.sh/uv/install.ps1 | iex
-```
-
 **Windows (Git Bash)** :
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
+**Windows (PowerShell)** :
+```powershell
+irm https://astral.sh/uv/install.ps1 | iex
+```
+
+> **Note Windows** : Les deux methodes (Git Bash et PowerShell) installent UV au meme endroit (`~/.local/bin` ou `%USERPROFILE%\.local\bin`). Vous pouvez utiliser l'une ou l'autre, elles coexistent sans probleme.
+> **Note macOS** : Le shell par defaut est souvent **zsh**. Ajoutez bien `.local/bin` dans **~/.zshrc** (voir ci-dessous) et evitez de melanger `.bashrc` et `.zshrc`.
+
+### Etape importante : Ajouter `.local/bin` au PATH
+
+Apres l'installation, UV affiche un message comme :
+
+```
+uv installed successfully to /home/user/.local/bin/uv
+To add $HOME/.local/bin to your PATH, run:
+  export PATH="$HOME/.local/bin:$PATH"
+```
+
+**Vous DEVEZ ajouter ce dossier au PATH de facon permanente.**
+
+**Linux / macOS (bash) / Git Bash :**
+```bash
+# Ajouter a la fin de ~/.bashrc (ou ~/.zshrc sur macOS)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+
+# Recharger
+source ~/.bashrc
+```
+
+**macOS (zsh par defaut)** :
+```bash
+# Ajouter a la fin de ~/.zshrc
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+
+# Recharger
+source ~/.zshrc
+```
+
+**Verification :**
+```bash
+echo $PATH | grep -q ".local/bin" && echo "OK: .local/bin est dans le PATH" || echo "ERREUR: .local/bin manque"
+```
+
 ### Verifier l'installation
 
 ```bash
-# Dans un NOUVEAU terminal
+# Dans un NOUVEAU terminal (important !)
 uv --version
 # Doit afficher : uv 0.x.x
 ```
+
+Si vous obtenez `uv: command not found`, c'est que `.local/bin` n'est pas dans votre PATH. Refaites l'etape precedente.
 
 ### Commandes essentielles
 
@@ -941,6 +982,64 @@ Ajoutez dans `.vscode/settings.json` :
     "python.terminal.activateEnvironment": true
 }
 ```
+
+---
+
+# Partie 6 : Desinstallation
+
+## Desinstaller UV
+
+Si vous souhaitez supprimer UV de votre systeme :
+
+### Etape 1 : Supprimer l'executable
+
+**Linux / macOS / Git Bash :**
+```bash
+rm -rf ~/.local/bin/uv
+rm -rf ~/.local/bin/uvx
+```
+
+**Windows (PowerShell)** :
+```powershell
+Remove-Item "$env:USERPROFILE\.local\bin\uv.exe" -Force
+Remove-Item "$env:USERPROFILE\.local\bin\uvx.exe" -Force
+```
+
+### Etape 2 : Supprimer le cache UV (optionnel)
+
+```bash
+rm -rf ~/.cache/uv
+```
+
+### Etape 3 : Nettoyer le PATH (optionnel)
+
+Si vous aviez ajoute `.local/bin` au PATH uniquement pour UV, vous pouvez le retirer de votre `~/.bashrc` :
+
+```bash
+# Editez le fichier et supprimez la ligne :
+# export PATH="$HOME/.local/bin:$PATH"
+code ~/.bashrc
+```
+
+## Desinstaller VS Code
+
+**Windows** :
+- Parametres > Applications > Visual Studio Code > Desinstaller
+
+**macOS** :
+- Glissez `/Applications/Visual Studio Code.app` vers la corbeille
+- Supprimez les donnees : `rm -rf ~/Library/Application\ Support/Code`
+
+**Linux** :
+```bash
+sudo apt remove code  # Debian/Ubuntu
+# ou
+sudo dnf remove code  # Fedora
+```
+
+## Desinstaller Git (Windows)
+
+- Parametres > Applications > Git > Desinstaller
 
 ---
 
