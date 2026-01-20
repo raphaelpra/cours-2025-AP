@@ -13,6 +13,8 @@
 - [ ] Installations : Git Bash, VS Code, UV (~30 min)
 - [ ] Configuration VS Code + venv (~15 min)
 - [ ] Verification finale -> [FAQ-SETUP.md#checklist](./FAQ-SETUP.md#checklist-de-validation)
+- [ ] Debugger VS Code (~10 min) -> [DEBUGGER.md](./DEBUGGER.md)
+- [ ] Tests avec pytest (~10 min) -> [TESTS.md](./TESTS.md)
 - [ ] Continuation du TP Boids -> [../06-classes-boids/tp-boids/](../06-classes-boids/tp-boids/)
 
 ---
@@ -23,6 +25,8 @@
 |----------|-------------|
 | [SETUP.md](./SETUP.md) | Guide complet d'installation et configuration |
 | [FAQ-SETUP.md](./FAQ-SETUP.md) | FAQ et resolution des problemes courants |
+| [DEBUGGER.md](./DEBUGGER.md) | Utiliser le debugger Python dans VS Code |
+| [TESTS.md](./TESTS.md) | Ecrire et lancer des tests avec pytest |
 | [diagnostic.sh](./diagnostic.sh) | Script de diagnostic automatique |
 
 ---
