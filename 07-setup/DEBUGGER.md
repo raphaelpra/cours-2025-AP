@@ -234,4 +234,63 @@ Affiche un message sans arreter l'execution (comme un print temporaire).
 
 ---
 
+## Debugger sans VS Code (pdb)
+
+Python inclut un debugger integre : **pdb** (Python DeBugger).
+
+### Ajouter un breakpoint dans le code
+
+Ajoutez `breakpoint()` dans votre code a l'endroit ou vous voulez vous arreter :
+
+```python
+def calcul(x):
+    result = x * 2
+    breakpoint()  # <-- le programme s'arrete ici
+    return result
+
+print(calcul(5))
+```
+
+### Commandes pdb
+
+Une fois dans le debugger, tapez ces commandes :
+
+| Commande | Raccourci | Action |
+|----------|-----------|--------|
+| `next` | `n` | Executer la ligne suivante (Step Over) |
+| `step` | `s` | Entrer dans la fonction (Step Into) |
+| `continue` | `c` | Continuer jusqu'au prochain breakpoint |
+| `return` | `r` | Continuer jusqu'au return de la fonction |
+| `print(var)` | `p var` | Afficher la valeur d'une variable |
+| `list` | `l` | Afficher le code autour de la ligne actuelle |
+| `where` | `w` | Afficher la pile d'appels |
+| `quit` | `q` | Quitter le debugger |
+
+### Exemple de session
+
+```
+$ python mon_script.py
+> /home/user/mon_script.py(4)calcul()
+-> return result
+(Pdb) p x
+5
+(Pdb) p result
+10
+(Pdb) n
+--Return--
+> /home/user/mon_script.py(4)calcul()->10
+(Pdb) c
+10
+```
+
+### Lancer directement en mode debug
+
+```bash
+python -m pdb mon_script.py
+```
+
+Le script demarre en mode debug des la premiere ligne.
+
+---
+
 *Ressource : [Documentation VS Code - Python Debugging](https://code.visualstudio.com/docs/python/debugging)*
